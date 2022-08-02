@@ -17,17 +17,17 @@
 #container {
     width: 80%;
     height: 80%;
-    /* margin: 10% 0; */
-    display: flex;
-    flex-wrap: wrap;
+    margin: 10% 0 5% 0;
+    border: 5px solid black;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr [col-start]);
 }
 
 .square {
     max-width: 1fr;
     max-height: 1fr;
     aspect-ratio: 1/1;
-    border: 2px solid black;
-    flex: 1 1 100px;
+    /* border: 1px solid black; */
 }
 
 .square:hover {
