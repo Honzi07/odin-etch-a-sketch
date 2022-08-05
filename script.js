@@ -21,8 +21,6 @@ function createDrawingBoard(squareNum) {
     }
 }
 
-
-
 colorPicker.addEventListener('change', function(event){
     color = event.target.value;
 })
