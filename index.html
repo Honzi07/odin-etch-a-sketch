@@ -9,8 +9,31 @@
     <title>Etch-A-Sketch</title>
 </head>
 <body>
-    
     <div class="wrapper">
+        <div class="header">
+            <div class="slide-container">
+                <input type="range" min="20" max="100" step="20" value="20" id="slider"
+                list="tickmarks">
+                <datalist id="tickmarks">
+                <option value="20"></option>
+                <option value="40"></option>
+                <option value="60"></option>
+                <option value="80"></option>
+                <option value="100"></option>
+                </datalist>
+              </div>
+              <div>
+                <input type="color" id="colorPicker" name="color"
+                value="#ffffff">
+                <label for="colorPicker">color</label>
+              </div>
+              <div>
+                <button>rainbow</button>
+              </div>
+              <div>
+                <button id="resetBtn">reset</button>
+              </div>
+        </div>
         <div id="container">
             <!-- <div class="square"></div> -->
         </div>

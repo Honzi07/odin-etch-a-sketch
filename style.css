@@ -14,22 +14,34 @@
     align-items: center;
 }
 
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 #container {
     width: 80%;
     height: 80%;
-    margin: 10% 0 5% 0;
+    margin: 2% 0 5% 0;
     border: 5px solid black;
     display: grid;
-    grid-template-columns: repeat(16, 1fr [col-start]);
+    grid-template-columns: repeat(8, 1fr [col-start]);
+    grid-template-rows: repeat(8, 1fr [col-start]);
 }
 
 .square {
-    max-width: 1fr;
-    max-height: 1fr;
+    /* max-width: 1fr;
+    max-height: 1fr; */
     aspect-ratio: 1/1;
-    /* border: 1px solid black; */
+    /* border: .2px solid black; */
 }
 
-.square:hover {
+/* .square:hover {
     background-color: aqua;
+} */
+
+.square-reset-color {
+    background-color: white;
 }
