@@ -3,6 +3,7 @@ const square = document.querySelectorAll('.square')
 const colorPicker = document.querySelector('#colorPicker')
 const resetBtn = document.querySelector('#resetBtn')
 
+
 let color = undefined;
 
 function createSquare() {
@@ -26,7 +27,17 @@ colorPicker.addEventListener('change', function(event){
 })
 
 
-createDrawingBoard(16)
+function num() {
+    do{
+        squareNum = prompt('Enter a number between 16 and 100')
+    }
+    while(squareNum < 16 || squareNum > 100);
 
+    console.log(squareNum)
+    createDrawingBoard(squareNum)    
+}
+
+
+num()
 
 
