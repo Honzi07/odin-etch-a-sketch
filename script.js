@@ -2,20 +2,19 @@ const container = document.querySelector('#container');
 const square = document.querySelectorAll('.square');
 const colorPicker = document.querySelector('#colorPicker');
 const resetBtn = document.querySelector('#resetBtn');
+const rainbowBtn = document.querySelector('#rainbowBtn');
 
 
 let color = undefined;
-
+let mousedown = false;
 
 function createSquare() {
     const square = document.createElement('div')
-    square.className = 'square';
     container.appendChild(square);
-    square.addEventListener('mouseover', 
-    event => event.target.style.backgroundColor = color)
 }
 
-function createDrawingBoard(squareNum) {
+
+function createGrid(squareNum) {
     container.style.gridTemplateColumns = `repeat(${squareNum}, 1fr [col-start])`;
     container.style.gridTemplateRows = `repeat(${squareNum}, 1fr [col-start])`;
     for(i = 0; i < (squareNum * squareNum); i++) {
@@ -23,18 +22,36 @@ function createDrawingBoard(squareNum) {
     }
 }
 
-colorPicker.addEventListener('change', function(event){
-    color = event.target.value;
-})
-
 
 function newGrid() {
     do{
         squareNum = prompt('Enter a number between 16 and 100')
     }
     while(squareNum < 16 || squareNum > 100);    
-    createDrawingBoard(squareNum);   
+    createGrid(squareNum);   
 }
+
+
+function colorGrid(event) {
+    if (mousedown && (event.target.parentElement == container)) event.target.style.backgroundColor = color;
+}
+
+
+colorPicker.addEventListener('change', function(event){
+    color = event.target.value;
+});
+
+container.addEventListener('mouseover', colorGrid);
+
+document.body.addEventListener('mousedown', function() {
+  mousedown = true;
+  colorGrid;
+});
+
+document.body.addEventListener('mouseup', function() {
+  mousedown = false;
+});
+
 
 // function remove() {
 //     let child = container.lastElementChild; 
@@ -52,7 +69,4 @@ resetBtn.addEventListener('click', () =>{
     newGrid();
 });
 
-createDrawingBoard(16)
-
-
-
+createGrid(16)
