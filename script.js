@@ -37,9 +37,21 @@ function colorGrid(event) {
 }
 
 
+function randomColor() {
+    rgbColor = {
+        r: Math.random() * 255,
+        g: Math.random() * 255,
+        b: Math.random() * 255
+    }
+    rgb = `rgb(${rgbColor.r},${rgbColor.g},${rgbColor.b})`
+    console.log(rgb)
+}
+
+
 colorPicker.addEventListener('change', function(event){
     color = event.target.value;
 });
+
 
 container.addEventListener('mouseover', colorGrid);
 
