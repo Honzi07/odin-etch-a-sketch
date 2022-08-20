@@ -4,15 +4,14 @@ const colorPicker = document.querySelector('#colorPicker');
 const resetBtn = document.querySelector('#resetBtn');
 const rainbowBtn = document.querySelector('#rainbowBtn');
 
-
 let color = undefined;
 let mousedown = false;
 
 function createSquare() {
     const square = document.createElement('div')
+    square.classList.add('square')
     container.appendChild(square);
 }
-
 
 function createGrid(squareNum) {
     container.style.gridTemplateColumns = `repeat(${squareNum}, 1fr [col-start])`;
@@ -22,7 +21,6 @@ function createGrid(squareNum) {
     }
 }
 
-
 function newGrid() {
     do{
         squareNum = prompt('Enter a number between 16 and 100')
@@ -31,27 +29,28 @@ function newGrid() {
     createGrid(squareNum);   
 }
 
+// function randomColor() {
+//     const rgbColor = {
+//         r: Math.random() * 255,
+//         g: Math.random() * 255,
+//         b: Math.random() * 255
+//     }
+//     let rgb = `rgb(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b})`
+//     console.log(rgb)
+// }
+
+
+colorPicker.addEventListener('change', function(e){
+    color = e.target.value;
+});
+    
+container.addEventListener('mousedown', (e) => {
+    e.target.style.backgroundColor = color
+});
 
 function colorGrid(event) {
     if (mousedown && (event.target.parentElement == container)) event.target.style.backgroundColor = color;
 }
-
-
-function randomColor() {
-    rgbColor = {
-        r: Math.random() * 255,
-        g: Math.random() * 255,
-        b: Math.random() * 255
-    }
-    rgb = `rgb(${rgbColor.r},${rgbColor.g},${rgbColor.b})`
-    console.log(rgb)
-}
-
-
-colorPicker.addEventListener('change', function(event){
-    color = event.target.value;
-});
-
 
 container.addEventListener('mouseover', colorGrid);
 
@@ -65,14 +64,6 @@ document.body.addEventListener('mouseup', function() {
 });
 
 
-// function remove() {
-//     let child = container.lastElementChild; 
-//         while (child) {
-//             container.removeChild(child);
-//             child = container.lastElementChild;
-//         }
-// }
-
 resetBtn.addEventListener('click', () =>{
     // remove()
     colorPicker.value = '#ffffff';
@@ -82,3 +73,8 @@ resetBtn.addEventListener('click', () =>{
 });
 
 createGrid(16)
+
+
+document.addEventListener('click', (e) => {
+    console.log(e.target);
+});
