@@ -29,28 +29,18 @@ function newGrid() {
     createGrid(squareNum);   
 }
 
-// function randomColor() {
-//     const rgbColor = {
-//         r: Math.random() * 255,
-//         g: Math.random() * 255,
-//         b: Math.random() * 255
-//     }
-//     let rgb = `rgb(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b})`
-//     console.log(rgb)
-// }
-
-
 colorPicker.addEventListener('change', function(e){
     color = e.target.value;
 });
-    
-container.addEventListener('mousedown', (e) => {
-    e.target.style.backgroundColor = color
-});
 
-function colorGrid(event) {
-    if (mousedown && (event.target.parentElement == container)) event.target.style.backgroundColor = color;
+function colorGrid(e) {
+    if (mousedown && (e.target.parentElement == container)) e.target.style.backgroundColor = color;
 }
+
+
+container.addEventListener('mousedown', (e) => {
+    e.target.style.backgroundColor = color;
+});
 
 container.addEventListener('mouseover', colorGrid);
 
@@ -64,6 +54,43 @@ document.body.addEventListener('mouseup', function() {
 });
 
 
+function randomColor() {
+    const rgbColor = {
+        r: Math.random() * 255,
+        g: Math.random() * 255,
+        b: Math.random() * 255
+    }
+    return `rgb(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b})`
+}
+
+function colorGridRgb(e) {
+    if (mousedown && (e.target.parentElement == container)) e.target.style.backgroundColor = randomColor();
+}
+
+container.addEventListener('mouseover', colorGridRgb);
+
+document.body.addEventListener('mousedown', function() {
+    colorGridRgb;
+    mousedown = true;
+  });
+
+container.addEventListener('mousedown', (e) => {
+    e.target.style.backgroundColor = randomColor();
+});
+
+
+function remove() {
+    let child = container.lastElementChild; 
+        while (child) {
+            container.removeChild(child);
+            child = container.lastElementChild;
+        }
+}
+
+
+
+
+
 resetBtn.addEventListener('click', () =>{
     // remove()
     colorPicker.value = '#ffffff';
@@ -72,8 +99,7 @@ resetBtn.addEventListener('click', () =>{
     newGrid();
 });
 
-createGrid(16)
-
+createGrid(16);
 
 document.addEventListener('click', (e) => {
     console.log(e.target);
