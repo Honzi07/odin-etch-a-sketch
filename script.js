@@ -3,9 +3,12 @@ const square = document.querySelectorAll('.square');
 const colorPicker = document.querySelector('#colorPicker');
 const resetBtn = document.querySelector('#resetBtn');
 const rainbowBtn = document.querySelector('#rainbowBtn');
+const erase = document.querySelector('#eraseBtn')
+
 
 let color = undefined;
 let mousedown = false;
+
 
 function createSquare() {
     const square = document.createElement('div')
@@ -79,16 +82,20 @@ container.addEventListener('mousedown', (e) => {
 });
 
 
-function remove() {
-    let child = container.lastElementChild; 
-        while (child) {
-            container.removeChild(child);
-            child = container.lastElementChild;
-        }
-}
+// function remove() {
+//     let child = container.lastElementChild; 
+//         while (child) {
+//             container.removeChild(child);
+//             child = container.lastElementChild;
+//         }
+// }
 
 
-
+eraseBtn.addEventListener('click', () => {
+    for(let i = 0; i < container.children.length; i++) {
+        container.children[i].style.backgroundColor = "white";
+    }
+})
 
 
 resetBtn.addEventListener('click', () =>{
