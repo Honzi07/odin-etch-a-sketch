@@ -57,6 +57,11 @@ rainbowBtn.addEventListener('click', () => {
 })
 
 
+container.addEventListener('dragstart', (e) => {
+    e.preventDefault()
+  })
+
+  
 function drawingMode() {
     classList = (rainbowBtn.classList.contains('rainbowOn'))
     if(classList == false) {
