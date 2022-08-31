@@ -32,63 +32,10 @@ function newGrid() {
     createGrid(squareNum);   
 }
 
+
 colorPicker.addEventListener('change', function(e){
     color = e.target.value;
 });
-
-function colorGrid(e) {
-    if (mousedown && (e.target.parentElement == container)) e.target.style.backgroundColor = color;
-}
-
-
-container.addEventListener('mousedown', (e) => {
-    e.target.style.backgroundColor = color;
-});
-
-container.addEventListener('mouseover', colorGrid);
-
-document.body.addEventListener('mousedown', function() {
-  mousedown = true;
-  colorGrid;
-});
-
-document.body.addEventListener('mouseup', function() {
-  mousedown = false;
-});
-
-
-function randomColor() {
-    const rgbColor = {
-        r: Math.random() * 255,
-        g: Math.random() * 255,
-        b: Math.random() * 255
-    }
-    return `rgb(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b})`
-}
-
-function colorGridRgb(e) {
-    if (mousedown && (e.target.parentElement == container)) e.target.style.backgroundColor = randomColor();
-}
-
-container.addEventListener('mouseover', colorGridRgb);
-
-document.body.addEventListener('mousedown', function() {
-    colorGridRgb;
-    mousedown = true;
-  });
-
-container.addEventListener('mousedown', (e) => {
-    e.target.style.backgroundColor = randomColor();
-});
-
-
-// function remove() {
-//     let child = container.lastElementChild; 
-//         while (child) {
-//             container.removeChild(child);
-//             child = container.lastElementChild;
-//         }
-// }
 
 
 eraseBtn.addEventListener('click', () => {
@@ -98,16 +45,70 @@ eraseBtn.addEventListener('click', () => {
 })
 
 
-resetBtn.addEventListener('click', () =>{
-    // remove()
-    colorPicker.value = '#ffffff';
-    color = '#ffffff';
+resetBtn.addEventListener('click', () => {
     container.innerHTML = '';
     newGrid();
 });
 
+
+rainbowBtn.addEventListener('click', () => {
+    rainbowBtn.classList.toggle('rainbowOn')
+    drawingMode()
+})
+
+
+function drawingMode() {
+    classList = (rainbowBtn.classList.contains('rainbowOn'))
+    if(classList == false) {
+        container.addEventListener('mousedown', (e) => {
+            e.target.style.backgroundColor = color;
+        });
+        
+        function colorGrid(e) {
+            if (mousedown && (e.target.parentElement == container)) e.target.style.backgroundColor = color;
+        }
+        
+        container.addEventListener('mouseover', colorGrid);
+        
+        document.body.addEventListener('mousedown', function() {
+          mousedown = true;
+          colorGrid;
+        });
+        
+        document.body.addEventListener('mouseup', function() {
+          mousedown = false;
+        });
+    } else if(classList == true) {
+        function randomColor() {
+            const rgbColor = {
+                r: Math.random() * 255,
+                g: Math.random() * 255,
+                b: Math.random() * 255
+            }
+            return `rgb(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b})`
+        }
+        
+        function colorGridRgb(e) {
+            if (mousedown && (e.target.parentElement == container)) e.target.style.backgroundColor = randomColor();
+        }
+        
+        container.addEventListener('mouseover', colorGridRgb);
+        
+        document.body.addEventListener('mousedown', function() {
+            mousedown = true;
+          });
+        
+        container.addEventListener('mousedown', (e) => {
+            e.target.style.backgroundColor = randomColor();
+        });
+    }
+}
+
+
+drawingMode()
 createGrid(16);
 
-document.addEventListener('click', (e) => {
-    console.log(e.target);
-});
+
+// document.addEventListener('click', (e) => {
+//     console.log(e.target);
+// });
