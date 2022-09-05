@@ -1,13 +1,14 @@
-const container = document.querySelector('#container');
+const container = document.querySelector('#drawing-board');
 const square = document.querySelectorAll('.square');
 const colorPicker = document.querySelector('#colorPicker');
 const resetBtn = document.querySelector('#resetBtn');
 const rainbowBtn = document.querySelector('#rainbowBtn');
-const erase = document.querySelector('#eraseBtn')
+const erase = document.querySelector('#eraseBtn');
 
 
 let color = undefined;
 let mousedown = false;
+let squareNum = 0;
 
 
 function createSquare() {
@@ -40,12 +41,13 @@ colorPicker.addEventListener('change', function(e){
 
 eraseBtn.addEventListener('click', () => {
     for(let i = 0; i < container.children.length; i++) {
-        container.children[i].style.backgroundColor = "white";
+        container.children[i].style.backgroundColor = '#ffffff';
     }
 })
 
 
 resetBtn.addEventListener('click', () => {
+    colorPicker.value = '#ffffff'
     container.innerHTML = '';
     newGrid();
 });
@@ -61,7 +63,7 @@ container.addEventListener('dragstart', (e) => {
     e.preventDefault()
   })
 
-  
+
 function drawingMode() {
     classList = (rainbowBtn.classList.contains('rainbowOn'))
     if(classList == false) {
@@ -112,8 +114,3 @@ function drawingMode() {
 
 drawingMode()
 createGrid(16);
-
-
-// document.addEventListener('click', (e) => {
-//     console.log(e.target);
-// });

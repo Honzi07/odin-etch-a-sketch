@@ -10,25 +10,31 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="header">
-              <div>
-                <input type="color" id="colorPicker" name="color"
-                value="#ffffff">
-                <label for="colorPicker">color</label>
-              </div>
-              <div>
-                <button id="rainbowBtn">rainbow</button>
-              </div>
-              <div>
-                <button id="resetBtn">New grid</button>
-              </div>
-              <div>
-                <button id="eraseBtn">erase</button>
-              </div>
+      <div class="game-body">
+        <h1>Etch A Sketch</h1>
+        <div id="drawing-board"></div>
+        <div class="circle-left">
+          <div class="container-rainbowBtn">
+            <button id="rainbowBtn">Random Color</button>
+          </div>
+            <div class="black-bar-left"></div>
+            <div class="container-colorPicker">
+              <div class="colorPicker-text">Select Color</div>
+              <label><input type="color" id="colorPicker" name="color"
+                value="#ffffff"></label>
+            </div>
         </div>
-        <div id="container">
-            <!-- <div class="square"></div> -->
+            <div class="circle-right">
+              <div class="black-bar-right"></div>
+              <div class="container-resetBtn">
+                <button id="resetBtn">New <br> Board</button>
+              </div>
+              <div class="container-eraseBtn">
+                <button id="eraseBtn">Erase Board</button>
+              </div>
+            </div>
         </div>
+      </div>
     </div>
 </body>
 </html>
