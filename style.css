@@ -46,17 +46,23 @@ h1 {
 
 }
 
+.drawing-board-shadow {
+    position: absolute;
+    width: calc(60% - 18px);
+    pointer-events: none;
+    background-color: transparent !important; 
+    box-shadow: inset 0px 0px 6px 2px;
+} 
+
+/* Need whole numbers for no gap between divs */
 #drawing-board {
     width: 60%;
     border: 10px solid #b40000;
     background-color: white;
-    /* box-shadow: 5px 5px inset; */
     display: grid;
     margin-bottom: 7rem;
     margin-left: 2rem;
     margin-right: 2rem;
-    box-shadow: inset 0px 0px 6px 2px;
-
 }
 
 #drawing-board div {

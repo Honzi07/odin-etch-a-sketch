@@ -12,14 +12,14 @@ let squareNum = 0;
 
 
 function createSquare() {
-    const square = document.createElement('div')
-    square.classList.add('square')
+    const square = document.createElement('div');
+    square.classList.add('square');
     container.appendChild(square);
 }
 
 function createGrid(squareNum) {
+    shadow() 
     container.style.gridTemplateColumns = `repeat(${squareNum}, 1fr [col-start])`;
-    container.style.gridTemplateRows = `repeat(${squareNum}, 1fr [col-start])`;
     for(i = 0; i < (squareNum * squareNum); i++) {
         createSquare();
     }
@@ -31,6 +31,13 @@ function newGrid() {
     }
     while(squareNum < 16 || squareNum > 100);    
     createGrid(squareNum);   
+}
+
+function shadow() {
+    const shadow = document.createElement('div');
+    shadow.classList.add('drawing-board-shadow');
+    const drawingBoard = document.querySelector('#drawing-board')
+    drawingBoard.appendChild(shadow)
 }
 
 
