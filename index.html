@@ -13,26 +13,39 @@
       <div class="game-body">
         <h1>Etch A Sketch</h1>
         <div id="drawing-board"></div>
-        <div class="circle-left">
-          <div class="container-rainbowBtn">
-            <button id="rainbowBtn">Random Color</button>
-          </div>
-            <div class="black-bar-left"></div>
+
+        <div class="controls">
+          <div class="controls-left">
+            <div class="container-rainbowBtn">
+              <button id="rainbowBtn">Random Color</button>
+            </div>
             <div class="container-colorPicker">
               <div class="colorPicker-text">Select Color</div>
               <label><input type="color" id="colorPicker" name="color"
                 value="#ffffff"></label>
             </div>
-        </div>
-            <div class="circle-right">
-              <div class="black-bar-right"></div>
-              <div class="container-resetBtn">
-                <button id="resetBtn">New <br> Board</button>
-              </div>
-              <div class="container-eraseBtn">
-                <button id="eraseBtn">Erase Board</button>
+            <div class="container-circle-left">
+              <div class="circle-left-shadow"></div>
+              <div class="circle-left">
+                  <div class="black-bar-left"></div>
               </div>
             </div>
+          </div>
+          <div class="controls-right">
+            <div class="container-resetBtn">
+              <button id="resetBtn">New <br> Board</button>
+            </div>
+            <div class="container-eraseBtn">
+              <button id="eraseBtn">Erase Board</button>
+            </div>
+            <div class="container-circle-right">
+              <div class="circle-right-shadow"></div>
+              <div class="circle-right">
+                <div class="black-bar-right"></div>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </div>

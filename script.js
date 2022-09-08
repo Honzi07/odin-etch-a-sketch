@@ -6,7 +6,7 @@ const rainbowBtn = document.querySelector('#rainbowBtn');
 const erase = document.querySelector('#eraseBtn');
 
 
-let color = undefined;
+let color = '#ffffff';
 let mousedown = false;
 let squareNum = 0;
 
@@ -36,8 +36,8 @@ function newGrid() {
 function shadow() {
     const shadow = document.createElement('div');
     shadow.classList.add('drawing-board-shadow');
-    const drawingBoard = document.querySelector('#drawing-board')
-    drawingBoard.appendChild(shadow)
+    const drawingBoard = document.querySelector('#drawing-board');
+    drawingBoard.appendChild(shadow);
 }
 
 
@@ -61,18 +61,18 @@ resetBtn.addEventListener('click', () => {
 
 
 rainbowBtn.addEventListener('click', () => {
-    rainbowBtn.classList.toggle('rainbowOn')
-    drawingMode()
+    rainbowBtn.classList.toggle('rainbowOn');
+    drawingMode();
 })
 
 
 container.addEventListener('dragstart', (e) => {
-    e.preventDefault()
+    e.preventDefault();
   })
 
 
 function drawingMode() {
-    classList = (rainbowBtn.classList.contains('rainbowOn'))
+    classList = (rainbowBtn.classList.contains('rainbowOn'));
     if(classList == false) {
         container.addEventListener('mousedown', (e) => {
             e.target.style.backgroundColor = color;
@@ -99,7 +99,7 @@ function drawingMode() {
                 g: Math.random() * 255,
                 b: Math.random() * 255
             }
-            return `rgb(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b})`
+            return `rgb(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b})`;
         }
         
         function colorGridRgb(e) {
@@ -119,5 +119,33 @@ function drawingMode() {
 }
 
 
-drawingMode()
+const circleLeft = document.querySelector('.circle-left');
+rainbowBtn.addEventListener('click', () => {
+    circleLeft.style.transform = 'rotate(-0.25turn)';
+    circleLeft.style.transition = 'transform 0.7s';
+});
+
+colorPicker.addEventListener('click', () => {
+    circleLeft.style.transform = 'rotate(0turn)';
+    circleLeft.style.transition = 'transform 0.7s';
+});
+
+const circleRight = document.querySelector('.circle-right');
+resetBtn.addEventListener('click', () => {
+    circleRight.style.transform = 'rotate(0.25turn)';
+    circleRight.style.transition = 'transform 0.7s';
+});
+
+eraseBtn.addEventListener('click', () => {
+    circleRight.style.transform = 'rotate(0turn)';
+    circleRight.style.transition = 'transform 0.7s';
+});
+
+
+colorPicker.addEventListener('change', () => {
+    colorPicker.parentElement.style.backgroundColor = color;
+});
+
+
+drawingMode();
 createGrid(16);
