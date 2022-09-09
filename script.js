@@ -19,18 +19,18 @@ function createSquare() {
 
 function createGrid(squareNum) {
     shadow() 
-    container.style.gridTemplateColumns = `repeat(${squareNum}, 1fr [col-start])`;
+    container.style.gridTemplateColumns = `repeat(${squareNum}, 1fr)`;
+    container.style.gridTemplateRows = `repeat(${squareNum}, 1fr)`;
     for(i = 0; i < (squareNum * squareNum); i++) {
         createSquare();
     }
 }
 
 function newGrid() {
-    do{
-        squareNum = prompt('Enter a number between 16 and 100')
-    }
-    while(squareNum < 16 || squareNum > 100);    
-    createGrid(squareNum);   
+    squareNum = prompt('Enter a number between 16 and 100');
+    if(squareNum < 16 || squareNum > 100) {
+        createGrid(16); 
+    } else createGrid(squareNum); 
 }
 
 function shadow() {
@@ -66,7 +66,7 @@ rainbowBtn.addEventListener('click', () => {
 })
 
 
-container.addEventListener('dragstart', (e) => {
+document.addEventListener('dragstart', (e) => {
     e.preventDefault();
   })
 
@@ -139,11 +139,6 @@ resetBtn.addEventListener('click', () => {
 eraseBtn.addEventListener('click', () => {
     circleRight.style.transform = 'rotate(0turn)';
     circleRight.style.transition = 'transform 0.7s';
-});
-
-
-colorPicker.addEventListener('change', () => {
-    colorPicker.parentElement.style.backgroundColor = color;
 });
 
 
